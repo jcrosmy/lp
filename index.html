@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LPタイトル（仮）</title>
+  <meta name="description" content="LPの説明（仮）" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header class="header">
+    <div class="container header__inner">
+      <div class="logo">LOGO</div>
+      <a class="btn btn--ghost" href="#contact">お問い合わせ</a>
+    </div>
+  </header>
+
+  <!-- ヒーロー -->
+  <main>
+    <section class="hero">
+      <div class="container hero__grid">
+        <div>
+          <p class="badge">NEW</p>
+          <h1 class="hero__title">
+            一行で刺さる<br />
+            キャッチコピー（仮）
+          </h1>
+          <p class="hero__lead">
+            ここに“誰の/どんな悩みを/どう解決するか”を短く。
+            まずはテスト公開できる最小構成のLPです。
+          </p>
+          <div class="hero__cta">
+            <a class="btn" href="#contact">無料で相談する</a>
+            <a class="btn btn--ghost" href="#features">特徴を見る</a>
+          </div>
+          <p class="hero__note">※フォーム送信はデモ（実運用は後で接続）</p>
+        </div>
+
+        <div class="card hero__card">
+          <h2 class="card__title">3つのポイント</h2>
+          <ul class="list">
+            <li>要点が一目でわかる</li>
+            <li>問い合わせまで最短</li>
+            <li>スマホでも読みやすい</li>
+          </ul>
+          <div class="mini">
+            <p class="mini__label">所要時間</p>
+            <p class="mini__value">30秒で理解</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 特徴 -->
+    <section id="features" class="section">
+      <div class="container">
+        <h2 class="section__title">特徴（仮）</h2>
+        <p class="section__lead">あとから差し替えやすいブロック構成にしてあります。</p>
+
+        <div class="grid3">
+          <div class="card">
+            <h3 class="card__title">特徴1</h3>
+            <p class="text">ユーザーのメリットを短く。</p>
+          </div>
+          <div class="card">
+            <h3 class="card__title">特徴2</h3>
+            <p class="text">根拠や実績があればここに。</p>
+          </div>
+          <div class="card">
+            <h3 class="card__title">特徴3</h3>
+            <p class="text">安心材料・保証・サポートなど。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section--alt">
+      <div class="container">
+        <h2 class="section__title">よくある質問（仮）</h2>
+
+        <details class="faq" open>
+          <summary>Q. これは本番公開できますか？</summary>
+          <p>A. できます。まずはローカル→URL発行でテスト公開するのが安全です。</p>
+        </details>
+        <details class="faq">
+          <summary>Q. フォーム送信はどうしますか？</summary>
+          <p>A. 後でGoogleフォーム、フォームサービス、またはAPI連携に差し替え可能です。</p>
+        </details>
+        <details class="faq">
+          <summary>Q. 画像やデザインは後で入れられますか？</summary>
+          <p>A. はい。ブロックごとに差し替えやすい構造にしています。</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- お問い合わせ -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section__title">お問い合わせ（仮）</h2>
+        <p class="section__lead">このフォームは“デモ”。送信ボタンで完了表示だけ出ます。</p>
+
+        <form id="contactForm" class="form">
+          <div class="form__row">
+            <label class="label" for="name">お名前</label>
+            <input class="input" id="name" name="name" type="text" placeholder="山田 太郎" required />
+          </div>
+
+          <div class="form__row">
+            <label class="label" for="email">メール</label>
+            <input class="input" id="email" name="email" type="email" placeholder="example@mail.com" required />
+          </div>
+
+          <div class="form__row">
+            <label class="label" for="message">内容</label>
+            <textarea class="textarea" id="message" name="message" rows="5" placeholder="ご相談内容を入力してください" required></textarea>
+          </div>
+
+          <button class="btn btn--full" type="submit">送信する</button>
+
+          <p id="formMsg" class="form__msg" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <small>© <span id="year"></span> Company Name</small>
+      <a class="footer__link" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">TOPへ</a>
+    </div>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
