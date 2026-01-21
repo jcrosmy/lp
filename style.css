@@ -1,5 +1,5 @@
 :root{
-  --bg:#0b1220;
+  --bg:#071427;
   --card:#101a2f;
   --text:#e6ebf5;
   --muted:#a9b3c7;
@@ -13,12 +13,15 @@
 
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
+
+/* エーゲ海イメージ背景 */
 body{
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Hiragino Kaku Gothic ProN", "Noto Sans JP", Arial, sans-serif;
   background:
-    radial-gradient(900px 400px at 10% 0%, rgba(110,231,255,.18), transparent 55%),
-    radial-gradient(900px 400px at 90% 10%, rgba(167,139,250,.16), transparent 60%),
-    var(--bg);
+    radial-gradient(900px 520px at 15% 8%, rgba(120, 220, 255, .28), transparent 60%),
+    radial-gradient(980px 560px at 85% 12%, rgba(120, 170, 255, .18), transparent 62%),
+    radial-gradient(1100px 700px at 55% 110%, rgba(255, 255, 255, .08), transparent 60%),
+    linear-gradient(180deg, #061a33 0%, #063a66 35%, #071427 100%);
   color:var(--text);
   line-height:1.6;
 }
@@ -29,7 +32,7 @@ a{color:inherit;text-decoration:none}
 .header{
   position:sticky; top:0; z-index:10;
   backdrop-filter: blur(10px);
-  background: rgba(11,18,32,.65);
+  background: rgba(6,26,51,.65);
   border-bottom:1px solid var(--line);
 }
 .header__inner{
@@ -58,6 +61,22 @@ a{color:inherit;text-decoration:none}
   box-shadow:none;
 }
 .btn--full{width:100%; border-radius:14px}
+
+/* 画像ボタン（購入CTA） */
+.btn-img{
+  display:inline-block;
+  border-radius: 999px;
+  overflow:hidden;
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: 0 10px 22px rgba(0,0,0,.22);
+  transform: translateZ(0);
+}
+.btn-img img{
+  display:block;
+  height: 52px;   /* ←ボタン画像の高さに合わせて調整 */
+  width: auto;
+}
+.btn-img:hover{ transform: translateY(-1px); }
 
 .hero{padding:56px 0 28px}
 .hero__grid{
@@ -88,7 +107,11 @@ a{color:inherit;text-decoration:none}
 .hero__note{color:var(--muted); font-size:12px; margin:0}
 
 .section{padding:44px 0}
-.section--alt{background: rgba(255,255,255,.03); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+.section--alt{
+  background: rgba(255,255,255,.04);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line)
+}
 .section__title{margin:0 0 8px; font-size:24px}
 .section__lead{margin:0 0 18px; color:var(--muted)}
 
@@ -102,7 +125,7 @@ a{color:inherit;text-decoration:none}
 }
 
 .card{
-  background: rgba(16,26,47,.72);
+  background: rgba(16,26,47,.78);
   border:1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -122,7 +145,7 @@ a{color:inherit;text-decoration:none}
 .mini__value{margin:0; font-weight:800}
 
 .faq{
-  background: rgba(16,26,47,.50);
+  background: rgba(16,26,47,.55);
   border:1px solid var(--line);
   border-radius: 14px;
   padding:14px 14px;
@@ -131,27 +154,10 @@ a{color:inherit;text-decoration:none}
 .faq summary{cursor:pointer; font-weight:700}
 .faq p{margin:10px 0 0; color:var(--muted)}
 
-.form{
-  max-width: 560px;
-}
-.form__row{display:grid; gap:8px; margin-bottom:14px}
-.label{font-size:13px; color:var(--muted)}
-.input, .textarea{
-  width:100%;
-  padding:12px 12px;
-  border-radius:14px;
-  border:1px solid var(--line);
-  background: rgba(0,0,0,.18);
-  color: var(--text);
-  outline:none;
-}
-.input:focus, .textarea:focus{border-color: rgba(110,231,255,.5)}
-.form__msg{margin:12px 0 0; color: var(--accent); font-weight:700; min-height: 1.2em}
-
 .footer{
   padding:26px 0 34px;
   border-top:1px solid var(--line);
-  background: rgba(0,0,0,.12);
+  background: rgba(0,0,0,.18);
 }
 .footer__inner{
   display:flex; justify-content:space-between; align-items:center;

@@ -14,88 +14,67 @@
   <meta property="og:description" content="朝も夜もこれ1本。敏感肌にもやさしい毎日ケア。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jcrosmy.github.io/lp/" />
-  <!-- TODO: OGP画像URLを実在URLに差し替え（/assets/ogp.jpg 等） -->
   <meta property="og:image" content="https://example.com/ogp.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- =========================================
-       ✅ 計測タグ貼り付け場所（ここは </head> 直前）
-       1) Google Tag (gtag.js) or Google Tag Manager
-       2) Meta Pixel
-       ※ まだタグが無ければ空のままでOK（クリック計測は「タグが入っていれば」動きます）
+       ✅ 計測タグ貼り付け場所（</head>直前）
+       ここに
+       ・Google Tag / GTM
+       ・Meta Pixel
+       の <script> をそのまま貼る
        ========================================= -->
 
-  <!-- 例：Google Tag (gtag.js) をここに貼る -->
-  <!-- 例：Meta Pixel の <script> をここに貼る -->
-
   <script>
-    /**
-     * === クリック計測の設定 ===
-     * 下の2つは、あなたの広告管理画面の値に置き換えてください。
-     *
-     * Google広告（コンバージョン）:
-     *  - send_to: "AW-XXXXXXX/XXXXXXXXXXXX"
-     * Meta Pixel:
-     *  - fbq('track','ViewContent') / 'AddToCart' / 'Lead' など
-     */
+    /* ========= 計測設定 ========= */
     window.__MEASURE__ = {
-      GOOGLE_ADS_SEND_TO: "AW-XXXXXXX/XXXXXXXXXXXX", // ←ここを差し替え
-      META_EVENT_NAME: "ViewContent"                  // ←必要に応じて変更（例: 'Lead'）
+      GOOGLE_ADS_SEND_TO: "AW-XXXXXXX/XXXXXXXXXXXX", // ←Google広告のIDに差し替え
+      META_EVENT_NAME: "ViewContent"                // 例: Lead / AddToCart / ViewContent
     };
 
-    // 購入ページURL（指定済み）
     window.__SHOP_URL__ = "https://jcrosmy.base.shop/items/132095391";
 
-    // 計測→遷移（新規タブ）の共通関数
     function trackAndOpenShop(source) {
       try {
-        // GA4 / Google広告（gtag）
         if (typeof window.gtag === "function" && window.__MEASURE__?.GOOGLE_ADS_SEND_TO?.includes("AW-")) {
           window.gtag("event", "conversion", {
-            send_to: window.__MEASURE__.GOOGLE_ADS_SEND_TO,
-            event_callback: function(){ /* callbackは不要（新規タブなので） */ }
+            send_to: window.__MEASURE__.GOOGLE_ADS_SEND_TO
           });
         }
 
-        // Meta Pixel（fbq）
         if (typeof window.fbq === "function" && window.__MEASURE__?.META_EVENT_NAME) {
           window.fbq("track", window.__MEASURE__.META_EVENT_NAME, { source: source || "cta" });
         }
 
-        // 任意：GA4イベント（入っていれば記録される）
         if (typeof window.gtag === "function") {
           window.gtag("event", "shop_click", { source: source || "cta" });
         }
-      } catch (e) {
-        // 計測失敗しても購入導線は止めない
-      }
+      } catch (e) {}
 
       window.open(window.__SHOP_URL__, "_blank", "noopener,noreferrer");
-      return false; // aタグのデフォルト遷移は使わない（計測関数経由）
+      return false;
     }
   </script>
 </head>
 
 <body>
   <!-- =========================================
-       ✅ noscript貼り付け場所（<body>開始直後）
+       ✅ noscriptタグ貼り付け場所（body直後）
        ・GTM noscript
        ・Meta Pixel noscript
        ========================================= -->
-  <!-- ここに noscript がある場合は貼る -->
 
   <!-- ヘッダー -->
   <header class="header">
     <div class="container header__inner">
       <div class="logo">Masfit</div>
 
-      <!-- ✅ ヘッダーCTA：ショップへ（クリック計測つき） -->
-      <a class="btn btn--ghost"
+      <a class="btn-img"
          href="https://jcrosmy.base.shop/items/132095391"
          target="_blank"
          rel="noopener noreferrer"
          onclick="return trackAndOpenShop('header');">
-        ショップへ
+        <img src="./assets/btn-buy.png" alt="ショップへ" />
       </a>
     </div>
   </header>
@@ -115,16 +94,14 @@
           </p>
 
           <div class="hero__cta">
-            <!-- ✅ メインCTA：購入ページへ（クリック計測つき） -->
-            <a class="btn"
+            <a class="btn-img"
                href="https://jcrosmy.base.shop/items/132095391"
                target="_blank"
                rel="noopener noreferrer"
                onclick="return trackAndOpenShop('hero_primary');">
-              ショップで購入する
+              <img src="./assets/btn-buy.png" alt="ショップで購入する" />
             </a>
 
-            <!-- サブCTA（スクロール） -->
             <a class="btn btn--ghost" href="#features">特徴を見る</a>
           </div>
 
@@ -192,14 +169,13 @@
           </div>
         </div>
 
-        <!-- ✅ セクション内CTA（追加） -->
-        <div style="margin-top:16px;">
-          <a class="btn"
+        <div style="margin-top:18px;">
+          <a class="btn-img"
              href="https://jcrosmy.base.shop/items/132095391"
              target="_blank"
              rel="noopener noreferrer"
              onclick="return trackAndOpenShop('features_cta');">
-            購入ページへ
+            <img src="./assets/btn-buy.png" alt="購入ページへ" />
           </a>
         </div>
       </div>
@@ -225,19 +201,17 @@
           <p>A. 使用量にもよりますが、1本で約1か月程度を目安にお使いいただけます。</p>
         </details>
 
-        <!-- ✅ FAQ下CTA（広告LPで効きます） -->
-        <div style="margin-top:16px;">
-          <a class="btn"
+        <div style="margin-top:18px;">
+          <a class="btn-img"
              href="https://jcrosmy.base.shop/items/132095391"
              target="_blank"
              rel="noopener noreferrer"
              onclick="return trackAndOpenShop('faq_cta');">
-            ショップで購入する
+            <img src="./assets/btn-buy.png" alt="ショップで購入する" />
           </a>
         </div>
       </div>
     </section>
-
   </main>
 
   <!-- フッター -->
